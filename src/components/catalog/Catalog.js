@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./catalog.css";
-import Movie from "../Movie/Movie";
+import Movie from "../Movie";
 
 export default function Catalog() {
     const[movies, setMovies] = useState([])

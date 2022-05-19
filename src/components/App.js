@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Catalog from "./catalog/Catalog";
-import Showtimes from "./Showtimes/Showtimes";
-import Topbar from "./Topbar/Topbar";
+import Showtimes from "./Showtimes";
+import Topbar from "./Topbar";
 
 export default function App() {
     return(
