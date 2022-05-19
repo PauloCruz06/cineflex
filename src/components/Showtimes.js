@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import Day from "./Day/Day";
+import Day from "./Day";
 import Footer from "./Footer";
 
 import styled from "styled-components";

@@ -23,6 +23,11 @@ const FooTer = styled.div`
     left: 0px;
     bottom: 0px;
     > p{
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        word-wrap: break-word;
         margin-left: 14px;
     }
     > .movie{
