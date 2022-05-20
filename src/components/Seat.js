@@ -2,21 +2,26 @@ import React from "react";
 
 import styled from "styled-components";
 
-export default function Seat({ name, isAvailable }){
+export default function Seat({ name, isAvailable, index, book }){
     const [color, setColor] = React.useState("#c3cfd9");
+
+    function addColor(color){
+        setColor(color);
+        book(color, index);
+    }
 
     if(isAvailable === true){
         return(
             <SeaT 
                 backcolor={color} 
-                onClick={(color==="#c3cfd9") ? (() => setColor("#8dd7cf")) : (() => setColor("#c3cfd9"))}
+                onClick={(color==="#c3cfd9") ? (() => addColor("#8dd7cf")) : (() => addColor("#c3cfd9"))}
             >
                 {name}
             </SeaT>
         );
     }else{
         return(
-            <SeaT backcolor="#FBE192">
+            <SeaT backcolor="#FBE192" onClick={() => alert("Esse assento não está disponível")}>
                 {name}
             </SeaT>
         );

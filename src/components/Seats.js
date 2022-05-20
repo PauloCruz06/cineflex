@@ -11,6 +11,7 @@ export default function Seats(){
     const { id } = useParams();
     const[session, setSession] = useState({});
     const[seats, setSeats] = useState ([]);
+    const[freeseat, setFreeseat] = useState ([]);
     
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`);
@@ -22,13 +23,26 @@ export default function Seats(){
     }, []);
 
     if(seats.length > 0){
+        function book(color, index){
+            let newSeats = [];
+            seats.map((seat) => (
+                newSeats.push({id: seat.id, color: seat.isAvailable ? "#c3cfd9" : "#FBE192"})
+            ));
+            console.log(newSeats);
+            newSeats[index] = {
+                id: newSeats[index].id,
+                color: color
+            }
+            setFreeseat(newSeats);
+        }
+
         return(
             <>
                 <SeaTs>
                     <p>Selecione o(s) assentos(s)</p>
                     <div className="seatsbox">
-                        {seats.map((seat) => (
-                            <Seat name={seat.name} isAvailable={seat.isAvailable} />
+                        {seats.map((seat, index) => (
+                            <Seat name={seat.name} isAvailable={seat.isAvailable} index={index} book={book} />
                         ))}
                     </div>
                 </SeaTs>
@@ -79,6 +93,7 @@ const SeaTs = styled.div`
         width: 92%;
         height: auto;
         display: grid;
+        justify-items: center;
         grid-template-columns: 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr;
         grid-template-rows: 20fr 20fr 20fr 20fr 20fr;
     }
