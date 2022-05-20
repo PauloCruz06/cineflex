@@ -8,7 +8,7 @@ export default function Day({ weekday, date, showtimes }){
             <p>{weekday} - {date}</p>
             <div className="schedule">
                 {showtimes.map((time) => (
-                    <Link to={`/sessao/${time.id}`}>
+                    <Link to={`/assentos/${time.id}`}>
                         <button>{time.name}</button>
                     </Link>
                 ))}

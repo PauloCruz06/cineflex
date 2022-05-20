@@ -20,25 +20,38 @@ export default function Showtimes(){
             setDays(re.data.days);
         });
     }, []);
-    
-    return(
-        <>
-            <ShowTimes>
-                <p>Selecione o horário</p>
-                <div className="days">
-                    {days.map((day) => (
-                        <Day weekday={day.weekday} date={day.date} showtimes={day.showtimes} />
-                    ))}
-                </div>
-            </ShowTimes>
-            <Footer>
-                <div className="movie">
-                    <img alt={showtimes.title} src={showtimes.posterURL} />
-                </div>
-                <p>{showtimes.title}</p>
-            </Footer>
-        </>
-    );
+
+    if(days.length === 0){
+        return(
+            <>
+                <ShowTimes>
+                    <p>Carregando...</p>
+                </ShowTimes>
+                <Footer>
+                    <p>Carregando...</p>
+                </Footer>
+            </>
+        );
+    }else{
+        return(
+            <>
+                <ShowTimes>
+                    <p>Selecione o horário</p>
+                    <div className="days">
+                        {days.map((day) => (
+                            <Day weekday={day.weekday} date={day.date} showtimes={day.showtimes} />
+                        ))}
+                    </div>
+                </ShowTimes>
+                <Footer>
+                    <div className="movie">
+                        <img alt={showtimes.title} src={showtimes.posterURL} />
+                    </div>
+                    <p>{showtimes.title}</p>
+                </Footer>
+            </>
+        );
+    }
 }
 
 
