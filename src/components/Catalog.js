@@ -11,7 +11,6 @@ export default function Catalog() {
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
         promise.then((re) => {
-            console.log(re);
             setMovies(re.data);
         });
     }, []);

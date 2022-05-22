@@ -20,8 +20,6 @@ export default function Form({ id, title, date, session }){
         const seatsname = seats.map((seat) => seat.name);
         setPurchaser("");
         setCpf("");
-        console.log(seats.map((seat) => seat.id));
-        console.log(obj);
         axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", obj);
         navigate("/sucesso", {state:{
                                 ...obj, 

@@ -20,7 +20,6 @@ export default function Seats(){
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`);
         promise.then((re) => {
-            console.log(re.data);
             setSession(re.data);
             setSeats(re.data.seats);
             re.data.seats.map((seat) => (

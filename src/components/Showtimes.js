@@ -16,7 +16,6 @@ export default function Showtimes(){
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`);
         promise.then((re) => {
-            console.log(re);
             setShowtimes(re.data);
             setDays(re.data.days);
         });
