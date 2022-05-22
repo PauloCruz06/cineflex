@@ -46,10 +46,29 @@ export default function Seats(){
                     <p>Selecione o(s) assentos(s)</p>
                     <div className="seatsbox">
                         {seats.map((seat, index) => (
-                            <Seat name={seat.name} id={id} isAvailable={seat.isAvailable} index={index} book={book} />
+                            <Seat name={seat.name} isAvailable={seat.isAvailable} index={index} book={book} />
                         ))}
                     </div>
-                    <Form id={freeseat}/>
+                    <Label>
+                        <div>
+                            <Selected></Selected>
+                            <p>Selecionado</p>
+                        </div>
+                        <div>
+                            <Available></Available>
+                            <p>Disponível</p>
+                        </div>
+                        <div>
+                            <Unavailable></Unavailable>
+                            <p>Indisponível</p>
+                        </div>
+                    </Label>
+                    <Form 
+                        id={freeseat} 
+                        title={session.movie.title} 
+                        date={session.day.date} 
+                        session={session.name} 
+                    />
                 </SeaTs>
                 <Footer>
                     <div className="movie">
@@ -102,4 +121,47 @@ const SeaTs = styled.div`
         grid-template-columns: 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr;
         grid-template-rows: 20fr 20fr 20fr 20fr 20fr;
     }
+    
+`
+const Label = styled.div`
+    width: 84%;
+    height: auto;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 33fr 33fr 33fr;
+    grid-template-rows: 100fr;
+    margin-bottom: 40px;
+    > div{
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    p{
+        width: auto;
+        height: 28px;
+        font-weight: 400;
+        font-size: 13px;
+        color: #4E5A65
+    }
+    button{
+        width: 25px;
+        height: 25px;
+        border-radius: 17px;
+    }
+`
+const Selected = styled.button`
+    border: 1px solid #1AAE9E;
+    background-color: #8DD7CF;
+`
+
+const Available = styled.button`
+    border: 1px solid #7B8B99;
+    background-color: #C3CFD9;
+`
+const Unavailable = styled.button`
+    border: 1px solid #F7C52B;
+    background-color: #FBE192;
 `
