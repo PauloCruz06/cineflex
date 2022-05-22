@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import Backbutton from "./Backbuttom";
 import Day from "./Day";
 import Footer from "./Footer";
 
@@ -35,6 +36,7 @@ export default function Showtimes(){
     }else{
         return(
             <>
+                <Backbutton />
                 <ShowTimes>
                     <p>Selecione o horário</p>
                     <div className="days">

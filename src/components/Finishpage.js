@@ -1,36 +1,41 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+import Backbutton from "./Backbuttom";
+
 export default function Finishpage(){
     const location = useLocation();
 
     return(
-        <Div>
-            <p>
-                <p>Pedido feito</p>
-                <p>com sucesso!</p>
-            </p>
-            <div>
-                <h3>Filme e sessão</h3>
-                <p>{location.state.title}</p>
-                <p>{location.state.date} {location.state.session}</p>
-            </div>
-            <div>
-                <h3>Ingressos</h3>
-                {location.state.names.map((name) => (
-                    <p>Assento {name}</p>
-                ))}
-            </div>
-            <div>
-                <h3>Comprador</h3>
-                <p>Nome: {location.state.name}</p>
-                <p>CPF: {location.state.cpf}</p>
-            </div>
-            <Link to="/">
-                <button>Voltar pra Home</button>
-            </Link>
-        </Div>
-    )
+        <>
+            <Backbutton />
+            <Div>
+                <p>
+                    <p>Pedido feito</p>
+                    <p>com sucesso!</p>
+                </p>
+                <div>
+                    <h3>Filme e sessão</h3>
+                    <p>{location.state.title}</p>
+                    <p>{location.state.date} {location.state.session}</p>
+                </div>
+                <div>
+                    <h3>Ingressos</h3>
+                    {location.state.names.map((name) => (
+                        <p>Assento {name}</p>
+                    ))}
+                </div>
+                <div>
+                    <h3>Comprador</h3>
+                    <p>Nome: {location.state.name}</p>
+                    <p>CPF: {location.state.cpf}</p>
+                </div>
+                <Link to="/">
+                    <button>Voltar pra Home</button>
+                </Link>
+            </Div>
+        </>
+        )
 
 }
 

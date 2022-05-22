@@ -24,14 +24,16 @@ export default function Catalog() {
         );
     }else{
         return(
-            <CataLog>
-                <p>Selecione o filme</p>
-                <div className="movies">
-                    {movies.map((movie) => (
-                        <Movie title={movie.title} url={movie.posterURL} id={movie.id} />
-                    ))}
-                </div>
-            </CataLog>
+            <>
+                <CataLog>
+                    <p>Selecione o filme</p>
+                    <div className="movies">
+                        {movies.map((movie) => (
+                            <Movie title={movie.title} url={movie.posterURL} id={movie.id} />
+                        ))}
+                    </div>
+                </CataLog>
+            </>
         );
     }
 }

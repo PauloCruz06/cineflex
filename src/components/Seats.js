@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import Backbutton from "./Backbuttom";
 import Footer from "./Footer";
 import Seat from "./Seat";
 import Form from "./Form";
@@ -42,6 +43,7 @@ export default function Seats(){
 
         return(
             <>
+                <Backbutton />
                 <SeaTs>
                     <p>Selecione o(s) assentos(s)</p>
                     <div className="seatsbox">
