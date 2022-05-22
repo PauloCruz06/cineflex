@@ -58,7 +58,7 @@ export default function Form({ id, title, date, session }){
             <input
                 type="text"
                 id="cpf"
-                placeholder="Digite seu CPF (apenas números)..."
+                placeholder="Digite seu CPF..."
                 value={cpf}
                 onChange={(e) => setCpf(e.target.value)}
                 pattern="[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[-][0-9]{2}"
