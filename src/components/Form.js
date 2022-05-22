@@ -37,7 +37,6 @@ export default function Form({ id, title, date, session }){
 
     function validSeat(){
         const idseats = (id.filter((seat) => seat.color === "#8dd7cf"));
-        console.log(idseats);
         if(idseats.length === 0){
             return false;
         }
