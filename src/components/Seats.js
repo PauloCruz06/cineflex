@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Footer from "./Footer";
 import Seat from "./Seat";
+import Form from "./Form";
 
 import styled from "styled-components";
 
@@ -12,6 +13,8 @@ export default function Seats(){
     const[session, setSession] = useState({});
     const[seats, setSeats] = useState ([]);
     const[freeseat, setFreeseat] = useState ([]);
+    const newSeats = [];
+
     
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`);
@@ -19,20 +22,21 @@ export default function Seats(){
             console.log(re.data);
             setSession(re.data);
             setSeats(re.data.seats);
+            re.data.seats.map((seat) => (
+                newSeats.push({id: seat.id, name: seat.name, color: seat.isAvailable ? "#c3cfd9" : "#FBE192"})
+            ));
+            setFreeseat(newSeats);
         });
     }, []);
 
     if(seats.length > 0){
         function book(color, index){
-            let newSeats = [];
-            seats.map((seat) => (
-                newSeats.push({id: seat.id, color: seat.isAvailable ? "#c3cfd9" : "#FBE192"})
-            ));
-            console.log(newSeats);
+            freeseat.map((seat) => (newSeats.push({...seat})));
             newSeats[index] = {
                 id: newSeats[index].id,
+                name: newSeats[index].name,
                 color: color
-            }
+            };
             setFreeseat(newSeats);
         }
 
@@ -42,9 +46,10 @@ export default function Seats(){
                     <p>Selecione o(s) assentos(s)</p>
                     <div className="seatsbox">
                         {seats.map((seat, index) => (
-                            <Seat name={seat.name} isAvailable={seat.isAvailable} index={index} book={book} />
+                            <Seat name={seat.name} id={id} isAvailable={seat.isAvailable} index={index} book={book} />
                         ))}
                     </div>
+                    <Form id={freeseat}/>
                 </SeaTs>
                 <Footer>
                     <div className="movie">
